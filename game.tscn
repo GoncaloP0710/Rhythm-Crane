@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://bkn5adt5mfa2i"]
+
+[ext_resource type="Texture2D" uid="uid://cg52v1i1y67im" path="res://textures/background.png" id="1_nen13"]
+[ext_resource type="Script" path="res://scripts/crane_machine.gd" id="1_ywvkt"]
+[ext_resource type="Texture2D" uid="uid://b84nuanifqydr" path="res://textures/claw_machine.png" id="2_e7e3h"]
+[ext_resource type="Script" path="res://scripts/claw.gd" id="3_oo6ek"]
+[ext_resource type="Texture2D" uid="uid://dubokuwc81ylg" path="res://textures/claw.png" id="4_gm03j"]
+[ext_resource type="Texture2D" uid="uid://ce0dlpvuwcc4h" path="res://textures/Tux.png" id="6_abqex"]
+[ext_resource type="Texture2D" uid="uid://bk1sh4ecu7nc6" path="res://textures/pointer-removebg-preview.png" id="6_mgtel"]
+[ext_resource type="Texture2D" uid="uid://cqjhmr8hmg2id" path="res://textures/scores.png" id="8_40c4s"]
+[ext_resource type="Texture2D" uid="uid://ohd4i68jx4ss" path="res://textures/info.png" id="9_pll81"]
+[ext_resource type="Texture2D" uid="uid://dtkme86c5yxjh" path="res://textures/lines.png" id="10_qpe8d"]
+[ext_resource type="Texture2D" uid="uid://dhft1mitmeqgy" path="res://textures/line.png" id="11_secub"]
+[ext_resource type="Texture2D" uid="uid://dpfs0wuwt6w35" path="res://textures/down.png" id="12_adovj"]
+[ext_resource type="Script" path="res://scripts/note.gd" id="12_yc3j1"]
+
+[node name="gameFrontView" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-0.499996, 2)
+scale = Vector2(2.45617, 2.1269)
+texture = ExtResource("1_nen13")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CraneMachine" type="Node2D" parent="."]
+script = ExtResource("1_ywvkt")
+
+[node name="machine" type="Sprite2D" parent="CraneMachine"]
+texture_filter = 1
+position = Vector2(-287, -3.42392)
+scale = Vector2(0.869565, 0.869565)
+texture = ExtResource("2_e7e3h")
+
+[node name="Tux" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Tux"]
+position = Vector2(-420, 35)
+scale = Vector2(0.201887, 0.201887)
+texture = ExtResource("6_abqex")
+
+[node name="Claw" type="Node2D" parent="."]
+script = ExtResource("3_oo6ek")
+
+[node name="claw" type="Sprite2D" parent="Claw"]
+position = Vector2(-417, -163)
+texture = ExtResource("4_gm03j")
+
+[node name="pointer" type="Sprite2D" parent="Claw"]
+position = Vector2(-410, 57)
+texture = ExtResource("6_mgtel")
+
+[node name="scores" type="Sprite2D" parent="."]
+position = Vector2(107, 223)
+scale = Vector2(0.402941, 0.402941)
+texture = ExtResource("8_40c4s")
+
+[node name="info" type="Sprite2D" parent="."]
+position = Vector2(266.224, -244.625)
+scale = Vector2(0.584722, 0.584722)
+texture = ExtResource("9_pll81")
+
+[node name="ropes" type="Sprite2D" parent="."]
+position = Vector2(253, -2)
+rotation = -1.57414
+scale = Vector2(1, 1.5289)
+texture = ExtResource("10_qpe8d")
+
+[node name="finishLine" type="Node2D" parent="."]
+position = Vector2(33.255, 5.875)
+
+[node name="line" type="Sprite2D" parent="finishLine"]
+rotation = -1.59855
+scale = Vector2(0.599934, 0.615815)
+skew = -0.00292397
+texture = ExtResource("11_secub")
+
+[node name="note" type="Node2D" parent="."]
+position = Vector2(529, 68)
+script = ExtResource("12_yc3j1")
+
+[node name="direction" type="Sprite2D" parent="note"]
+scale = Vector2(0.475806, 0.475806)
+texture = ExtResource("12_adovj")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="camera_position_changed" from="CraneMachine" to="Claw" method="_on_crane_machine_camera_position_changed"]
+[connection signal="position_changed" from="Claw" to="CraneMachine" method="_on_claw_position_changed"]

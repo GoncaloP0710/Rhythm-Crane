@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://brljxfl443bxa"]
+
+[ext_resource type="Script" path="res://scripts/claw.gd" id="1_i3k7f"]
+
+[node name="Claw" type="CharacterBody2D"]
+script = ExtResource("1_i3k7f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(498, 145)
