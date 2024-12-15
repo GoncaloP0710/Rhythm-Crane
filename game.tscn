@@ -86,3 +86,4 @@ script = ExtResource("14_f3bmo")
 
 [connection signal="camera_position_changed" from="CraneMachine" to="Claw" method="_on_crane_machine_camera_position_changed"]
 [connection signal="position_changed" from="Claw" to="CraneMachine" method="_on_claw_position_changed"]
+[connection signal="move_claw" from="note" to="Claw" method="_on_note_move_claw"]

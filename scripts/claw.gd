@@ -35,18 +35,8 @@ func _ready():
 	previous_position = position
 
 func _process(delta):
-	# Collect inputs when a key is pressed (not held)
-	if Input.is_action_just_pressed("left") && (cameraPos == 1 || cameraPos == 3):
-		input_queue.append(Vector2(-1, 0))
-	elif Input.is_action_just_pressed("right") && (cameraPos == 1 || cameraPos == 3):
-		input_queue.append(Vector2(1, 0))
-	elif Input.is_action_just_pressed("up") && (cameraPos == 2 || cameraPos == 3):
-		input_queue.append(Vector2(0, -1))
-	elif Input.is_action_just_pressed("down") && (cameraPos == 2 || cameraPos == 3):
-		input_queue.append(Vector2(0, 1))
-
 	# Process the next input if the node is at the target position
-	if position == target_position and input_queue.size() > 0:
+	if input_queue.size() > 0:
 		var next_mov = input_queue.pop_front()
 		var new_position = position + Vector2(next_mov.x * GRID_SIZE_X, next_mov.y * GRID_SIZE_Y)
 		
@@ -65,3 +55,16 @@ func _process(delta):
 func _on_crane_machine_camera_position_changed(new_position: int) -> void:
 	cameraPos = new_position
 	print("Camera moved to position: ", new_position)
+
+func _on_note_move_claw(direction: String) -> void:
+	print("asoijdi9asjd98ajsd8as9jd8a9sjk 89asj8d as89dj 98asj 98asd 89saj 89asj 9a8j")
+	# Collect inputs when a key is pressed (not held)
+	if direction == "left" :
+		input_queue.append(Vector2(-1, 0))
+	elif direction == "right" :
+		print("suiaojdmn9uasjdm98asjduk 89sja89 dujas89udj")
+		input_queue.append(Vector2(1, 0))
+	elif direction == "up" :
+		input_queue.append(Vector2(0, -1))
+	elif direction == "down" :
+		input_queue.append(Vector2(0, 1))

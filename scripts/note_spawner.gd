@@ -57,6 +57,7 @@ func _create_note_at_time(time: float) -> void:
 	var note_instance = note_scene.instantiate()
 	note_instance.set_meta("direction", direction)
 	note_instance.set_meta("line", line)
+	note_instance.connect("move_claw", Callable($"../Claw", "_on_note_move_claw"))
 	
 		# Set the initial position of the note based on the direction
 	match direction:
