@@ -1,7 +1,7 @@
 extends Node2D
 
 # Reference to the line
-@onready var line = $"../finishLine"
+var line = null
 
 # Sprite reference
 @onready var sprite = $direction
@@ -13,17 +13,18 @@ var hasPassedLine = false
 var direction = ""  # Direction of movement as a string ("left", "right", "up", "down")
 
 func _ready() -> void:
-	# Assign a random direction as a string
-	var directions = ["left", "right", "up", "down"]
-	direction = directions[randi() % directions.size()]
+	# Retrieve the direction and line from metadata
+	direction = get_meta("direction")
+	line = get_meta("line")
 	
+	# Assign the correct texture based on the direction
 	if direction == "left":
 		sprite.texture = preload("res://textures/left.png")
-	if direction == "right":
+	elif direction == "right":
 		sprite.texture = preload("res://textures/right.png")
-	if direction == "up":
+	elif direction == "up":
 		sprite.texture = preload("res://textures/up.png")
-	if direction == "down":
+	elif direction == "down":
 		sprite.texture = preload("res://textures/down.png")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,7 +33,7 @@ func _process(delta: float) -> void:
 	position.x -= MOVE_SPEED * delta
 
 	# Check if the node has passed the line to its left
-	if not hasPassedLine and position.x < line.position.x:
+	if not hasPassedLine and line and position.x < line.position.x:
 		print("Node has passed the line to its left.")
 		hasPassedLine = true
 		queue_free()  # Remove the node from the scene
