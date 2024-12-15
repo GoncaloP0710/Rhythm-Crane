@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://bkn5adt5mfa2i"]
+[gd_scene load_steps=16 format=3 uid="uid://bkn5adt5mfa2i"]
 
 [ext_resource type="Texture2D" uid="uid://cg52v1i1y67im" path="res://textures/background.png" id="1_nen13"]
 [ext_resource type="Script" path="res://scripts/crane_machine.gd" id="1_ywvkt"]
 [ext_resource type="Texture2D" uid="uid://b84nuanifqydr" path="res://textures/claw_machine.png" id="2_e7e3h"]
 [ext_resource type="Script" path="res://scripts/claw.gd" id="3_oo6ek"]
 [ext_resource type="Texture2D" uid="uid://dubokuwc81ylg" path="res://textures/claw.png" id="4_gm03j"]
+[ext_resource type="Script" path="res://scripts/tux.gd" id="4_nlig1"]
 [ext_resource type="Texture2D" uid="uid://ce0dlpvuwcc4h" path="res://textures/Tux.png" id="6_abqex"]
 [ext_resource type="Texture2D" uid="uid://bk1sh4ecu7nc6" path="res://textures/pointer-removebg-preview.png" id="6_mgtel"]
 [ext_resource type="Texture2D" uid="uid://cqjhmr8hmg2id" path="res://textures/scores.png" id="8_40c4s"]
@@ -13,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dhft1mitmeqgy" path="res://textures/line.png" id="11_secub"]
 [ext_resource type="PackedScene" uid="uid://dmoi52557pvp7" path="res://scenes/actors/note.tscn" id="12_inc5r"]
 [ext_resource type="Script" path="res://scripts/note_spawner.gd" id="14_f3bmo"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="14_ql8yf"]
 
 [node name="gameFrontView" type="Node2D"]
 
@@ -33,6 +35,7 @@ scale = Vector2(0.869565, 0.869565)
 texture = ExtResource("2_e7e3h")
 
 [node name="Tux" type="Node2D" parent="."]
+script = ExtResource("4_nlig1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Tux"]
 position = Vector2(-420, 35)
@@ -51,9 +54,10 @@ position = Vector2(-410, 57)
 texture = ExtResource("6_mgtel")
 
 [node name="scores" type="Sprite2D" parent="."]
-position = Vector2(107, 223)
-scale = Vector2(0.402941, 0.402941)
+position = Vector2(197.102, 221.253)
+scale = Vector2(0.786282, 0.783412)
 texture = ExtResource("8_40c4s")
+vframes = 2
 
 [node name="info" type="Sprite2D" parent="."]
 position = Vector2(266.224, -244.625)
@@ -84,6 +88,18 @@ position = Vector2(515, 131)
 [node name="noteSpawner" type="Node2D" parent="."]
 script = ExtResource("14_f3bmo")
 
+[node name="score" type="RichTextLabel" parent="."]
+offset_left = 334.0
+offset_top = 197.0
+offset_right = 451.0
+offset_bottom = 267.0
+bbcode_enabled = true
+text = "[color=black] [wave] text"
+scroll_active = false
+script = ExtResource("14_ql8yf")
+
 [connection signal="camera_position_changed" from="CraneMachine" to="Claw" method="_on_crane_machine_camera_position_changed"]
+[connection signal="tux_captured" from="CraneMachine" to="score" method="_on_crane_machine_tux_captured"]
 [connection signal="position_changed" from="Claw" to="CraneMachine" method="_on_claw_position_changed"]
 [connection signal="move_claw" from="note" to="Claw" method="_on_note_move_claw"]
+[connection signal="move_claw" from="note" to="score" method="_on_note_move_claw"]

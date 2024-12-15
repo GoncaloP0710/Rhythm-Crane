@@ -42,7 +42,6 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("left") && direction == "left" :
 			emit_signal("move_claw", "left")
 		elif Input.is_action_pressed("right") && direction == "right" :
-			print("asokdjkmasoijdmoasidjaoijkasdi")
 			emit_signal("move_claw", "right")
 		elif Input.is_action_pressed("up") && direction == "up" :
 			emit_signal("move_claw", "up")

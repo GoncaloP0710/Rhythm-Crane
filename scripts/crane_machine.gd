@@ -3,6 +3,9 @@ extends Node
 # Reference to the claw node
 @onready var claw = $"../Claw" 
 
+# Reference to the tux node
+@onready var tux = $"../Tux"
+
 # Variable to save the claw's position
 var claw_position = Vector2.ZERO
 
@@ -10,9 +13,10 @@ var claw_position = Vector2.ZERO
 var target_position = Vector2.ZERO
 
 # Constants for grid size
-const GRID_SIZE = 16
-const GRID_SIZE_X = 10
-const GRID_SIZE_Y = 10
+const GRID_SIZE_X = 32
+const GRID_SIZE_Y = 16
+const GRID_SIZE_COLUMNS = 5
+const GRID_SIZE_ROWS = 3
 
 # Camera position
 var cameraPos = 1
@@ -22,11 +26,17 @@ var cameraPos = 1
 # Signal to notify about position changes
 signal camera_position_changed(new_position: int)
 
+# Signal to notify about position changes
+signal tux_captured(new_score : int)
+
 func _ready() -> void:
 	# Generate a random target position within the grid
 	randomize()
-	target_position = Vector2(randi() % GRID_SIZE_X, randi() % GRID_SIZE_Y) * GRID_SIZE
+	target_position = Vector2(randi() % GRID_SIZE_COLUMNS * GRID_SIZE_X, randi() % GRID_SIZE_ROWS * GRID_SIZE_Y)
 	print("Target position: ", target_position)
+	
+	# Set the Tux position to the target position
+	tux.position = target_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -34,8 +44,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_select"):  # Default action for space bar
 		if claw_position == target_position:
 			print("Claw is on the target position!")
-			target_position = Vector2(randi() % GRID_SIZE_X, randi() % GRID_SIZE_Y) * GRID_SIZE
+			target_position = Vector2(randi() % GRID_SIZE_COLUMNS * GRID_SIZE_X, randi() % GRID_SIZE_ROWS * GRID_SIZE_Y)
 			print("Target position: ", target_position)
+			emit_signal("tux_captured", 5)
+			
+			# Set the Tux position to the target position
+			tux.position = target_position
 		else:
 			print("Claw is not on the target position.")
 			
