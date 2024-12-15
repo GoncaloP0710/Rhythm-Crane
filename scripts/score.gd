@@ -22,6 +22,5 @@ func update_score(new_score: int) -> void:
 func _on_note_move_claw(direction: String) -> void:
 	update_score(1)
 
-
 func _on_crane_machine_tux_captured(new_score: int) -> void:
-	update_score(10)
+	update_score(new_score)

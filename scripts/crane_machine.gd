@@ -58,15 +58,19 @@ func _process(delta: float) -> void:
 		cameraPos = 1
 		sprite.texture = preload("res://textures/claw_machine.png")
 		emit_signal("camera_position_changed", cameraPos)
+		emit_signal("tux_captured", -2)
 		print("Camera position changed to: ", cameraPos)
 	elif Input.is_action_just_pressed("camera2"):
 		cameraPos = 2
+		sprite.texture = preload("res://textures/claw_machine_2.png")
 		emit_signal("camera_position_changed", cameraPos)
+		emit_signal("tux_captured", -2)
 		print("Camera position changed to: ", cameraPos)
 	elif Input.is_action_just_pressed("camera3"):
 		cameraPos = 3
 		sprite.texture = preload("res://textures/claw_machine_3.png")
 		emit_signal("camera_position_changed", cameraPos)
+		emit_signal("tux_captured", -2)
 		print("Camera position changed to: ", cameraPos)
 
 # Called when the claw's position changes
