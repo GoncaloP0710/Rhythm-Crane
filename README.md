@@ -1,7 +1,7 @@
 ## Game Title: Rhythm Crane Game
 
 ### Overview
-Rhythm Crane Game is an exciting and unique blend of rhythm and crane games. Players must hit notes in time with the music to control a crane machine and capture the character "Tux". The game features three different camera angles to enhance the gameplay experience.
+Rhythm Crane Game is an exciting and unique blend of rhythm and crane games. Players must hit notes in time with the music and the correct camera angle to control a crane machine and capture the character "Tux". The game features three different camera angles to enhance the gameplay experience.
 
 ### Features
 - **Rhythm Gameplay**: Hit notes in time with the music to control the crane.
@@ -12,7 +12,7 @@ Rhythm Crane Game is an exciting and unique blend of rhythm and crane games. Pla
 ### Controls
 - **Arrow Keys**: Use the "a", "w", "s" and "d" keys to hit notes in the rhythm game.
 - **Space Bar**: Press the space bar to interact with the crane machine.
-- **Camera Switch**: Press keys 1, 2, or 3 to switch between different camera angles.
+- **Camera Switch**: Press keys 1, 2, or 3 to switch between different camera angles. Each camera has diferent mechanics. Certain notes can only be pressed in a specific camera.
 
 ### Installation
 1. Download and install [Godot Engine](https://godotengine.org/).
