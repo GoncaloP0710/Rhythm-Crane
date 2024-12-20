@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkn5adt5mfa2i"]
+[gd_scene load_steps=20 format=3 uid="uid://bkn5adt5mfa2i"]
 
 [ext_resource type="Texture2D" uid="uid://cg52v1i1y67im" path="res://textures/background.png" id="1_nen13"]
 [ext_resource type="Script" path="res://scripts/crane_machine.gd" id="1_ywvkt"]
@@ -15,6 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://dmoi52557pvp7" path="res://scenes/actors/note.tscn" id="12_inc5r"]
 [ext_resource type="Script" path="res://scripts/note_spawner.gd" id="14_f3bmo"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="14_ql8yf"]
+[ext_resource type="Texture2D" uid="uid://b8nsre1irb1b0" path="res://textures/left.png" id="16_y2uy1"]
+[ext_resource type="Texture2D" uid="uid://dpfs0wuwt6w35" path="res://textures/down.png" id="17_u6vio"]
+[ext_resource type="Texture2D" uid="uid://dmgeurhys7ds1" path="res://textures/up.png" id="18_k0td0"]
+[ext_resource type="Texture2D" uid="uid://bxg4pyfd8al3h" path="res://textures/right.png" id="19_t6fjb"]
 
 [node name="gameFrontView" type="Node2D"]
 
@@ -97,6 +101,36 @@ bbcode_enabled = true
 text = "[color=black] [wave] text"
 scroll_active = false
 script = ExtResource("14_ql8yf")
+
+[node name="LeftFront" type="Sprite2D" parent="."]
+position = Vector2(44, -179)
+scale = Vector2(0.208333, 0.21509)
+texture = ExtResource("16_y2uy1")
+
+[node name="RightFront" type="Sprite2D" parent="."]
+position = Vector2(70, -178)
+scale = Vector2(0.208333, 0.21509)
+texture = ExtResource("19_t6fjb")
+
+[node name="DownSide" type="Sprite2D" parent="."]
+position = Vector2(227, -169)
+scale = Vector2(0.208333, 0.21509)
+texture = ExtResource("17_u6vio")
+
+[node name="UpSide" type="Sprite2D" parent="."]
+position = Vector2(227, -192)
+scale = Vector2(0.208333, 0.21509)
+texture = ExtResource("18_k0td0")
+
+[node name="UpIsometric" type="Sprite2D" parent="."]
+position = Vector2(423, -194)
+scale = Vector2(0.208333, 0.21509)
+texture = ExtResource("18_k0td0")
+
+[node name="RightIsometric" type="Sprite2D" parent="."]
+position = Vector2(445, -174)
+scale = Vector2(0.208333, 0.21509)
+texture = ExtResource("19_t6fjb")
 
 [connection signal="camera_position_changed" from="CraneMachine" to="Claw" method="_on_crane_machine_camera_position_changed"]
 [connection signal="tux_captured" from="CraneMachine" to="score" method="_on_crane_machine_tux_captured"]

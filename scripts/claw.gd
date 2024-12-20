@@ -58,11 +58,11 @@ func _on_crane_machine_camera_position_changed(new_position: int) -> void:
 
 func _on_note_move_claw(direction: String) -> void:
 	# Collect inputs when a key is pressed (not held)
-	if direction == "left" && (cameraPos == 1 || cameraPos == 3) :
+	if direction == "left" && (cameraPos == 1) :
 		input_queue.append(Vector2(-1, 0))
 	elif direction == "right" && (cameraPos == 1 || cameraPos == 3) :
 		input_queue.append(Vector2(1, 0))
 	elif direction == "up" && (cameraPos == 2 || cameraPos == 3) :
 		input_queue.append(Vector2(0, -1))
-	elif direction == "down" && (cameraPos == 2 || cameraPos == 3) :
+	elif direction == "down" && (cameraPos == 2) :
 		input_queue.append(Vector2(0, 1))
