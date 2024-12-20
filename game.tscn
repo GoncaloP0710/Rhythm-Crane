@@ -20,7 +20,7 @@
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(-0.499996, 2)
-scale = Vector2(2.45617, 2.1269)
+scale = Vector2(5.716, 4.95)
 texture = ExtResource("1_nen13")
 
 [node name="Camera2D" type="Camera2D" parent="."]

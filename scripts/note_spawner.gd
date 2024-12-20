@@ -51,6 +51,8 @@ func _process(delta: float) -> void:
 			_create_note_at_time(time)
 			# Remove the note from the dictionary to avoid creating it again
 			notes_data.erase(time)
+	if (notes_data.size() == 0):
+		SceneHandler.go_to_menu()
 
 func _create_note_at_time(time: float) -> void:
 	var direction = notes_data[time]
