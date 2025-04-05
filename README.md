@@ -1,4 +1,4 @@
-## Game Title: Rhythm Crane Game
+# Game Title: Rhythm Crane Game
 
 ### Overview
 Rhythm Crane Game is an exciting and unique blend of rhythm and crane games. Players must hit notes in time with the music and the correct camera angle to control a crane machine and capture the character "Tux". The game features three different camera angles to enhance the gameplay experience.
